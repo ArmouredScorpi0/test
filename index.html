@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goyal Enterprises | Industrial Zipper Supplier</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================
+           THEME: ICE & STEEL
+           ========================= */
+        :root {
+            /* Palette: Ice, Navy, Sky, White */
+            --bg-body: #ffffff;       /* Pure White */
+            --bg-alt: #f0f9ff;        /* Faint Ice Blue (Sky 50) */
+            --bg-card: #ffffff;       /* White Cards */
+            --bg-dark: #0c4a6e;       /* Deep Ocean Navy (Sky 900) */
+            
+            --text-main: #0f172a;     /* Dark Navy/Black */
+            --text-muted: #475569;    /* Blue-Grey Text */
+            
+            --accent: #0284c7;        /* Professional Sky Blue (Sky 600) */
+            --border: #e0f2fe;        /* Light Ice Border */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--bg-body);
+            overflow-x: hidden;
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 0px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* UTILITIES */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .uppercase { text-transform: uppercase; }
+        .font-bold { font-weight: 700; }
+        
+        /* LAYOUT ARCHITECTURE */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            width: 100%;
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Background Utilities */
+        .bg-body { background-color: var(--bg-body); }
+        .bg-alt { background-color: var(--bg-alt); }
+        .bg-dark { background-color: var(--bg-dark); color: white; }
+
+        /* HEADER & NAV */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(240, 249, 255, 0.95); /* Matches bg-alt with transparency */
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* DESKTOP NAV */
+        .nav-desktop {
+            display: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover { color: var(--accent); }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 24px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border-radius: 2px;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--bg-dark);
+            color: white;
+            border-color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--border);
+            color: var(--text-muted);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background-color: white;
+        }
+
+        /* MOBILE MENU */
+        .mobile-toggle {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--text-main);
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            background-color: var(--bg-body);
+            border-bottom: 1px solid var(--border);
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+
+        .mobile-menu.open {
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* TOAST NOTIFICATION */
+        #toast {
+            visibility: hidden;
+            min-width: 300px;
+            background-color: var(--bg-dark); /* Matches Navy theme */
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 16px;
+            position: fixed;
+            z-index: 10000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px; /* Slide up effect */
+        }
+
+        /* GRID SYSTEMS */
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+
+        /* ABOUT SECTION STYLES */
+        .intro-tag { color: var(--accent); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.75rem; display: block; margin-bottom: 8px; }
+        .intro-heading { font-size: 2.25rem; font-weight: 700; line-height: 1.2; margin-bottom: 24px; color: var(--text-main); }
+        .intro-sub { color: var(--text-muted); }
+        .intro-text { color: var(--text-muted); margin-bottom: 24px; font-size: 1.125rem; }
+        
+        .feature-box { 
+            border-left: 3px solid var(--accent); 
+            padding-left: 16px; 
+            background-color: var(--bg-card); /* Card pop */
+            padding: 16px;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .feature-title { font-weight: 700; color: var(--text-main); display: block; margin-bottom: 4px; }
+        .feature-desc { font-size: 0.75rem; color: var(--text-muted); }
+
+        .factory-img-placeholder {
+            background-color: var(--bg-body);
+            height: 320px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            position: relative;
+            border-radius: 2px;
+        }
+
+        /* PRODUCT CARDS */
+        .product-card {
+            background: var(--bg-alt); /* Ice Blue Card */
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-img-container {
+            width: 100%;
+            height: 240px;
+            background-color: var(--bg-body); /* White background for image */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            margin: 16px 16px 0 16px; /* Margin to show blue card behind */
+            width: calc(100% - 32px);
+        }
+
+        .product-img-actual {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Grayscale removed for always full color */
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-img-actual {
+            transform: scale(1.05);
+        }
+
+        .product-img-fallback-text {
+            font-weight: bold;
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            padding: 0 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .product-info { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-title { font-size: 1.125rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; transition: color 0.2s; }
+        .product-card:hover .product-title { color: var(--accent); }
+        
+        .cat-tag { 
+            display: inline-block; 
+            background: var(--bg-body); 
+            font-size: 10px; 
+            font-weight: 700; 
+            padding: 4px 8px; 
+            border-radius: 2px; 
+            text-transform: uppercase; 
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        /* WHY US ICONS */
+        .icon-group {
+            background-color: var(--bg-card);
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+        }
+        .icon-box {
+            width: 48px; height: 48px;
+            background-color: var(--bg-alt);
+            color: var(--accent);
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 2px;
+            margin-bottom: 16px;
+            transition: background-color 0.2s;
+        }
+        .icon-group:hover .icon-box { background-color: var(--accent); color: white; }
+
+        /* FORM */
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            background: var(--bg-body);
+            color: var(--text-main);
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+
+        input.error, textarea.error {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        
+        .error-msg {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: -12px;
+            margin-bottom: 12px;
+            display: none;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #94a3b8; /* Light grey for dark bg */
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--bg-body);
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+        }
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 24px;
+        }
+
+        /* PRODUCT DETAIL PAGE */
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .breadcrumb button { background: none; border: none; cursor: pointer; color: inherit; font: inherit; }
+        .breadcrumb button:hover { text-decoration: underline; color: var(--text-main); }
+
+        .detail-layout { display: flex; flex-direction: column; gap: 40px; }
+        .detail-img-box {
+            background-color: var(--bg-alt);
+            aspect-ratio: 1/1;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            color: var(--text-muted);
+            font-weight: 700;
+            overflow: hidden;
+        }
+        
+        .detail-img-actual {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .spec-list { list-style: none; padding: 0; }
+        .spec-item { display: flex; align-items: flex-start; margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); }
+        .check-icon { color: var(--accent); margin-right: 12px; font-weight: bold; }
+
+        /* RESPONSIVE MEDIA QUERIES */
+        @media (min-width: 768px) {
+            .nav-desktop { display: flex; }
+            .mobile-toggle { display: none; }
+            .grid-2 { grid-template-columns: 1fr 1fr; }
+            .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+            .grid-4 { grid-template-columns: repeat(4, 1fr); }
+            .form-grid { grid-template-columns: 1fr 1fr; }
+            .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+            .detail-layout { flex-direction: row; }
+            .detail-left, .detail-right { width: 50%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =========================
+         PAGE 1: MAIN HOME
+         ========================= -->
+    <div id="view-home">
+        
+        <!-- Header -->
+        <header>
+            <div class="container header-inner">
+                <!-- Logo -->
+                <a class="logo-group" onclick="router('home')">
+                    <img src="Goyal enterprises logo.png" alt="Goyal Enterprises" class="logo-img">
+                    <span style="font-weight: 700; font-size: 1.2rem; margin-left: 12px; color: var(--text-main); text-transform: uppercase;">
+                        Goyal Zip Enterprises
+                    </span>
+                </a>
+                
+                <!-- Desktop Nav -->
+                <nav class="nav-desktop">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#products-preview" class="nav-link">Products</a>
+                    <a href="#why-us" class="nav-link">Why Us</a>
+                    <a href="#enquiry" class="btn btn-primary" style="font-size: 0.75rem;">Make an Enquiry</a>
+                </nav>
+
+                <!-- Mobile Toggle -->
+                <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu">
+                <a href="#about" onclick="toggleMobileMenu()">About Us</a>
+                <a href="#products-preview" onclick="toggleMobileMenu()">Products</a>
+                <a href="#why-us" onclick="toggleMobileMenu()">Why Us</a>
+                <a href="#enquiry" onclick="toggleMobileMenu()" style="color: var(--accent);">Make an Enquiry</a>
+            </div>
+        </header>
+
+        <!-- About Us (Hero) - ICE BLUE BACKGROUND -->
+        <section id="about" class="bg-alt">
+            <div class="container">
+                <div class="grid-2" style="align-items: start;">
+                    <div>
+                        <span class="intro-tag">Since 1998</span>
+                        <h2 class="intro-heading">World-Class Quality Zippers <br><span class="intro-sub">Brand: EXL</span></h2>
+                        
+                        <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Who We Are</h3>
+                        <p class="intro-text" style="font-size: 0.95rem;">
+                            We are a leading manufacturer, supplier, and exporter of zippers, sliders, and garment accessories. 
+                            Our products are approved by <strong>ITS and SGS testing labs</strong>.
+                            Our enterprise is fully managed by talented manpower, including highly qualified dyeing masters and quality inspectors who oversee production from raw material procurement to the final stage.
+                        </p>
+            
+                        <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">Our Business Philosophy</h3>
+                        <p class="intro-text" style="font-size: 0.95rem;">
+                            Driven by the ambition to meet the ever-changing requirements of the market, we are committed to offering excellent products with an easy ordering process. 
+                            We aim to achieve desired quality standards by leveraging all available resources and following a target-oriented business approach to establish our presence globally.
+                        </p>
+            
+                        <div class="grid-2" style="gap: 16px; margin-top: 32px;">
+                            <div class="feature-box">
+                                <p class="feature-title">ISO 9001</p>
+                                <p class="feature-desc">Certified Quality</p>
+                            </div>
+                            <div class="feature-box">
+                                <p class="feature-title">Taiwan/German</p>
+                                <p class="feature-desc">Imported Machinery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="factory-img-placeholder">
+                            <span style="font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;">[Factory Floor Image]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Preview - WHITE BACKGROUND -->
+        <section id="products-preview" class="bg-body">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 48px;">
+                    <span class="intro-tag">Our Inventory</span>
+                    <h2 class="intro-heading" style="margin-bottom: 0;">Core Product Categories</h2>
+                </div>
+                
+                <div id="featured-products-list" class="grid-2" style="margin-bottom: 48px;">
+                    <!-- JS Populated -->
+                </div>
+
+                <div class="text-center">
+                    <button onclick="router('catalogue')" class="btn btn-primary" style="padding: 16px 40px; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+                        Explore Full Catalogue &rarr;
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us - ICE BLUE BACKGROUND -->
+        <section id="why-us" class="bg-alt">
+            <div class="container">
+                <div style="margin-bottom: 48px;">
+                    <h2 class="intro-heading" style="margin-bottom: 8px;">Why Partner With Us</h2>
+                    <p class="intro-text">Engineered for reliability.</p>
+                </div>
+                
+                <div class="grid-3" style="margin-bottom: 64px;">
+                    <div class="icon-group">
+                        <div class="icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19.4 15.4a2 2 0 00-1-.5l-2.4-.5a6 6 0 00-3.9.5l-.3.2a6 6 0 01-3.9.5l-2-.2a2 2 0 00-1.8.5M8 4h8l-1 1v5.2a2 2 0 00.6 1.4l5 5c1.3 1.3.4 3.4-1.4 3.4H4.8c-1.8 0-2.7-2.2-1.4-3.4l5-5A2 2 0 009 10.2V5L8 4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3 class="feature-title" style="font-size: 1.125rem; margin-bottom: 8px;">Chemical Safety</h3>
+                        <p class="feature-desc" style="font-size: 0.875rem; line-height: 1.6;">We use non-toxic paints and AZO-free dyes. Rigorous testing for Nickel-free compliance.</p>
+                    </div>
+                    <div class="icon-group">
+                        <div class="icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3 class="feature-title" style="font-size: 1.125rem; margin-bottom: 8px;">Zero-Defect Policy</h3>
+                        <p class="feature-desc" style="font-size: 0.875rem; line-height: 1.6;">Statistical quality control. Resistance testing for pull-off, twist, and lateral load.</p>
+                    </div>
+                    <div class="icon-group">
+                        <div class="icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3 class="feature-title" style="font-size: 1.125rem; margin-bottom: 8px;">Production Power</h3>
+                        <p class="feature-desc" style="font-size: 0.875rem; line-height: 1.6;">100% power backup ensures uninterrupted production lines. We meet deadlines.</p>
+                    </div>
+                </div>
+
+                <!-- LAB TESTING STRIP -->
+                <div style="background-color: var(--bg-dark); color: white; padding: 32px; border-radius: 2px;">
+                    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 32px;">
+                        <h3 style="font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; color: #94a3b8; white-space: nowrap;">
+                            Standardized Lab Testing Parameters:
+                        </h3>
+                        <ul style="display: flex; flex-wrap: wrap; gap: 24px; list-style: none; padding: 0; margin: 0; font-size: 0.95rem; font-weight: 500;">
+                            <li style="display: flex; align-items: center;"><span style="color: var(--accent); margin-right: 8px; font-weight: bold;">✓</span> Chain Cross-Wire Strength</li>
+                            <li style="display: flex; align-items: center;"><span style="color: var(--accent); margin-right: 8px; font-weight: bold;">✓</span> Top/Bottom Stop Holding</li>
+                            <li style="display: flex; align-items: center;"><span style="color: var(--accent); margin-right: 8px; font-weight: bold;">✓</span> Slider Pull-Off Resistance</li>
+                            <li style="display: flex; align-items: center;"><span style="color: var(--accent); margin-right: 8px; font-weight: bold;">✓</span> Torque/Twist Resistance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enquiry Form - NAVY BACKGROUND -->
+        <section id="enquiry" class="bg-dark">
+            <div class="container">
+                <div style="max-width: 600px; margin: 0 auto; position: relative; z-index: 10;">
+                    <h2 style="font-size: 1.875rem; font-weight: 700; margin-bottom: 8px; color: white;">Request a Quote</h2>
+                    <p style="color: #94a3b8; margin-bottom: 32px;">Direct line to our sales team. No login required.</p>
+                    
+                    <form id="enquiryForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-grid">
+                            <div>
+                                <label>Name</label>
+                                <input type="text" name="name" id="field-name" placeholder="Full Name">
+                                <div class="error-msg" id="error-name">Name is required</div>
+                            </div>
+                            <div>
+                                <label>Phone</label>
+                                <input type="tel" name="phone" id="field-phone" placeholder="+91 ...">
+                                <div class="error-msg" id="error-phone">Invalid phone number</div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label>Email Address</label>
+                            <input type="email" name="email" id="field-email" placeholder="company@domain.com">
+                            <div class="error-msg" id="error-email">Invalid email</div>
+                        </div>
+
+                        <div>
+                            <label>Enquiry Details</label>
+                            <textarea id="enquiry-message" name="message" rows="4" placeholder="I am interested in..."></textarea>
+                            <div class="error-msg" id="error-message">Please details</div>
+                        </div>
+
+                        <!-- Honeypot -->
+                        <div class="hidden">
+                            <input type="text" name="website" tabindex="-1">
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; background-color: var(--accent); border-color: var(--accent); padding: 14px;">
+                            Send Enquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+    <footer>
+        <div class="container footer-inner">
+            <div>
+                <span style="font-weight: 700; display: block; text-transform: uppercase;">Goyal Enterprises</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; display: block;">B2B Zipper Specialists (Brand: EXL)</span>
+            </div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">
+                <p style="font-weight: 500; color: var(--text-main); margin-bottom: 4px;">+91 95823 20581</p>
+                <p style="font-weight: 500; color: var(--text-main); margin-bottom: 4px;">+91 95607 25779</p>
+                <p>sales@goyalenterprises.com</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 16px;">© 2026 Goyal Enterprises.</p>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast"></div>
+
+    <!-- =========================
+         PAGE 2: FULL CATALOGUE
+         ========================= -->
+    <div id="view-catalogue" class="hidden" style="min-height: 100vh; background-color: var(--bg-alt);">
+        
+        <header>
+            <div class="container header-inner">
+                <button onclick="router('home')" class="btn btn-outline" style="border: none; padding-left: 0; background: none;">
+                    &larr; Back to Home
+                </button>
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; border: 1px solid var(--border); padding: 4px 12px; border-radius: 20px;">Product Catalogue</span>
+            </div>
+        </header>
+
+        <main class="container" style="padding-top: 48px; padding-bottom: 48px;">
+            <div style="margin-bottom: 40px;">
+                <h1 style="font-size: 2rem; font-weight: 700; color: var(--text-main);">Complete Product Range</h1>
+                <p style="color: var(--text-muted); margin-top: 8px;">Browse our technical specifications.</p>
+            </div>
+            <div id="catalogue-grid" class="grid-4">
+                <!-- JS Populated -->
+            </div>
+        </main>
+    </div>
+
+    <!-- =========================
+         PAGE 3: PRODUCT DETAIL
+         ========================= -->
+    <div id="view-product-detail" class="hidden" style="min-height: 100vh; background-color: var(--bg-body);">
+        
+        <header>
+            <div class="container header-inner">
+                <div class="breadcrumb">
+                    <button onclick="router('home')">Home</button>
+                    <span>/</span>
+                    <button onclick="router('catalogue')">Catalogue</button>
+                    <span>/</span>
+                    <span id="detail-breadcrumb-name" style="color: var(--text-main); font-weight: 600;">Product</span>
+                </div>
+                <button onclick="router('catalogue')" class="btn btn-outline" style="font-size: 0.75rem; padding: 6px 12px;">Close X</button>
+            </div>
+        </header>
+
+        <main class="container" style="padding-top: 48px; padding-bottom: 48px;">
+            <div class="detail-layout">
+                <div class="detail-left">
+                    <div class="detail-img-box">
+                        <div style="text-align: center;">
+                            <span style="font-size: 3rem; display: block; margin-bottom: 16px;">⚙️</span>
+                            <span style="text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.1em;">[High-Res Image]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-right">
+                    <span id="detail-category" class="intro-tag">Category</span>
+                    <h1 id="detail-name" style="font-size: 2.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 24px; color: var(--text-main);">Product Name</h1>
+                    
+                    <div style="background-color: var(--bg-alt); padding: 24px; border-left: 4px solid var(--bg-dark); border-radius: 2px; margin-bottom: 32px;">
+                        <h3 style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; color: var(--text-main);">Technical Specs</h3>
+                        <ul id="detail-specs" class="spec-list">
+                            <!-- JS Injected -->
+                        </ul>
+                    </div>
+
+                    <p id="detail-desc" style="color: var(--text-muted); margin-bottom: 32px; font-size: 1rem; line-height: 1.7;">Description text goes here.</p>
+
+                    <div style="display: flex; gap: 16px; border-top: 1px solid var(--border); padding-top: 24px;">
+                        <button id="detail-enquire-btn" class="btn btn-primary" style="flex: 1; background-color: var(--accent); border-color: var(--accent);">
+                            Request Quote
+                        </button>
+                        <button onclick="router('catalogue')" class="btn btn-outline" style="flex: 1;">
+                            Back to Catalogue
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- =========================
+         JAVASCRIPT LOGIC
+         ========================= -->
+    <script>
+        // --- GOOGLE SHEETS URL ---
+        // PASTE YOUR URL BELOW:
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybUN0eFjBmoNGJtyohIP9KUx-HpIhwNZsSiUWwWmsz5I6cDZn4DI7cJuFZiGU5rpZG/exec";
+
+        // --- DATA LAYER ---
+        const products = [
+            { id: 'knitted-concealed', image: 'knitted-concealed.jpg', name: 'Knitted Concealed Zippers', category: 'Concealed', specs: ['#3, #4 Sizes', 'Ultrasonic Top/Bottom Stopper', 'Knitted Tape'], description: 'Specially preferred in skirts, tops, and cushion covers. Easy to operate with a high-quality knitted finish.' },
+            { id: 'woven-concealed', image: 'woven-concealed.jpg', name: 'Woven Concealed Zippers', category: 'Concealed', specs: ['High Strength', 'Custom Built', 'Premium Raw Material'], description: 'Featured with high resilience. Suited for discerning demands in terms of quality and durability.' },
+            { id: 'plastic-open', image: 'plastic-open.jpg', name: 'Plastic Moulded Open-End', category: 'Plastic', specs: ['#3, #5, #8 Sizes', 'Interlocking Teeth', 'Heavy Purpose'], description: 'Suitable for sports wear and T-shirts. Consists of two rows of interlocking teeth with a sliding tab.' },
+            { id: 'plastic-close', image: 'plastic-close.jpg', name: 'Plastic Moulded Close-End', category: 'Plastic', specs: ['High Strength', 'Industry Standard Sizes', 'Various Shapes'], description: 'Ideal for jackets, knitted coats, outerwear, and various types of bags.' },
+            { id: 'metal-close', image: 'metal-close.jpg', name: 'Metal Close-End Zippers', category: 'Metal', specs: ['Golden Brass / Antique', 'Pin / Auto / Spring Lock', 'Heavy Duty'], description: 'Used in heavy leather jackets, jeans, and trousers. Durable nature with premium teeth finish.' },
+            { id: 'metal-open', image: 'metal-open.jpg', name: 'Metal Open-End Zippers', category: 'Metal', specs: ['Popular Fastener', 'Temp Joining', 'High Durability'], description: 'Perfect for clothing, luggage, sporting goods, camping gear.' },
+            { id: 'cfc-close', image: 'cfc-close.jpg', name: 'CFC Close-End Zippers', category: 'CFC', specs: ['#3, #5, #8, #10 Sizes', 'Non-separating', 'Premium Quality'], description: 'Mostly used in bags and luggage. Manufactured to justify our position as a leading name.' },
+            { id: 'cfc-zippers', image: 'cfc-zippers.jpg', name: 'CFC Zippers (General)', category: 'CFC', specs: ['Long Puller', 'Auto-lock Slider', 'Nickel Free'], description: 'Moulded box pin applied to keep it nickel free. Available in sizes #3 through #10.' },
+            { id: 'poly-coil', image: 'poly-coil.jpg', name: 'Polyester Coil Zippers', category: 'Coil', specs: ['Nickel Free', 'Moulded Box Pin', 'Versatile Application'], description: 'Finds usage in bags, luggage, suitcases, and purses.' },
+            { id: 'sliders', image: 'sliders.jpg', name: 'Sliders And Pullers', category: 'Accessories', specs: ['Various Shapes', 'Custom Sizes', 'Essential Component'], description: 'Body and pull-tab components primarily used to join or separate zipper elements.' }
+        ];
+
+        // --- RENDER FUNCTIONS ---
+        function renderFeatured() {
+            const container = document.getElementById('featured-products-list');
+            const featuredIndices = [0, 2, 4, 7]; 
+            const featured = featuredIndices.map(i => products[i]);
+            
+            container.innerHTML = featured.map(product => `
+                <div class="product-card" onclick="router('product', '${product.id}')">
+                    <div class="product-img-container">
+                        <img src="${product.image}" alt="${product.name}" class="product-img-actual" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="product-img-fallback-text">${product.name}</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">View Specs &rarr;</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderCatalogue() {
+            const container = document.getElementById('catalogue-grid');
+            container.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div onclick="router('product', '${product.id}')">
+                        <div class="product-img-container">
+                            <img src="${product.image}" alt="${product.name}" class="product-img-actual" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <span class="product-img-fallback-text">${product.name}</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title" style="font-size: 1rem;">${product.name}</h3>
+                            <div><span class="cat-tag">${product.category}</span></div>
+                            <ul style="font-size: 0.8rem; color: var(--text-muted); padding-left: 16px; margin-bottom: 16px;">
+                                ${product.specs.slice(0, 2).map(spec => `<li>${spec}</li>`).join('')}
+                            </ul>
+                            <button onclick="event.stopPropagation(); enquireAbout('${product.name}')" class="btn btn-primary" style="width: 100%; font-size: 0.75rem; text-transform: uppercase;">
+                                Enquire Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            document.getElementById('detail-breadcrumb-name').innerText = product.name;
+            document.getElementById('detail-category').innerText = product.category;
+            document.getElementById('detail-name').innerText = product.name;
+            document.getElementById('detail-desc').innerText = product.description;
+            
+            // Set image for Detail View
+            const imgContainer = document.querySelector('.detail-img-box');
+            imgContainer.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="detail-img-actual" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="product-img-fallback-text" style="text-align: center; color: var(--text-muted); display: none;">
+                    <span style="font-size: 3rem; display: block; margin-bottom: 16px;">⚙️</span>
+                    <span style="text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.1em;">${product.name}</span>
+                </div>
+            `;
+
+            const specsList = document.getElementById('detail-specs');
+            specsList.innerHTML = product.specs.map(s => `
+                <li class="spec-item">
+                    <span class="check-icon">✓</span>
+                    <span>${s}</span>
+                </li>
+            `).join('');
+
+            document.getElementById('detail-enquire-btn').onclick = () => enquireAbout(product.name);
+        }
+
+        // --- CORE LOGIC ---
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('open');
+        }
+
+        // --- UPDATED ROUTER WITH HISTORY API SUPPORT ---
+        function router(view, param = null, pushHistory = true) {
+            const views = {
+                home: document.getElementById('view-home'),
+                catalogue: document.getElementById('view-catalogue'),
+                product: document.getElementById('view-product-detail')
+            };
+
+            Object.values(views).forEach(el => el.classList.add('hidden'));
+            window.scrollTo(0, 0);
+
+            if (document.getElementById('mobile-menu').classList.contains('open')) {
+                toggleMobileMenu();
+            }
+
+            if (view === 'home') views.home.classList.remove('hidden');
+            else if (view === 'catalogue') views.catalogue.classList.remove('hidden');
+            else if (view === 'product') {
+                renderProductDetail(param);
+                views.product.classList.remove('hidden');
+            }
+
+            // Update Browser History
+            if (pushHistory) {
+                const state = { view, param };
+                const url = view === 'home' ? '#' : `#${view}${param ? '/' + param : ''}`;
+                history.pushState(state, '', url);
+            }
+        }
+
+        // Listen for Browser Back/Forward Buttons
+        window.addEventListener('popstate', (event) => {
+            if (event.state) {
+                router(event.state.view, event.state.param, false); // false = don't push history again
+            } else {
+                router('home', null, false); // Default to home if no state
+            }
+        });
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.className = "show";
+            
+            // Hide after 4 seconds
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 4000);
+        }
+
+        function enquireAbout(productName) {
+            router('home');
+            setTimeout(() => {
+                const formSection = document.getElementById('enquiry');
+                const messageBox = document.getElementById('enquiry-message');
+                formSection.scrollIntoView({ behavior: 'smooth' });
+                messageBox.value = `I am interested in ${productName}.`;
+                messageBox.focus();
+                messageBox.style.borderColor = '#0052cc';
+                setTimeout(() => messageBox.style.borderColor = '', 2000);
+            }, 100);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            // Validation
+            let valid = true;
+            document.querySelectorAll('.error-msg').forEach(e => e.style.display = 'none');
+            document.querySelectorAll('input, textarea').forEach(e => e.classList.remove('error'));
+
+            if (!formData.get('name') || formData.get('name').length < 2) {
+                document.getElementById('error-name').style.display = 'block';
+                document.getElementById('field-name').classList.add('error');
+                valid = false;
+            }
+            if (!formData.get('phone')) {
+                document.getElementById('error-phone').style.display = 'block';
+                document.getElementById('field-phone').classList.add('error');
+                valid = false;
+            }
+
+            if (valid) {
+                const btn = document.getElementById('submit-btn');
+                const originalText = btn.innerText;
+                btn.innerText = "Sending...";
+                btn.disabled = true;
+
+                // --- SEND TO GOOGLE SHEETS ---
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // IMPORTANT: Bypasses CORS for Google Scripts
+                    body: formData
+                })
+                .then(() => {
+                    // 1. Get the name they typed
+                    const customerName = formData.get('name'); 
+                    
+                    // 2. Show the personalized toast
+                    showToast(`Thanks ${customerName}, we have received your enquiry and will contact you shortly.`);
+                    
+                    // 3. Reset form
+                    form.reset();
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    showToast("Error sending message. Please try calling us directly.");
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                });
+            }
+        }
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check current hash on load to direct user to correct page
+            const hash = window.location.hash;
+            if (hash.includes('#product/')) {
+                const productId = hash.split('/')[1];
+                router('product', productId, false); // false prevents double history push on load
+            } else if (hash.includes('#catalogue')) {
+                router('catalogue', null, false);
+            } else {
+                renderFeatured();
+                renderCatalogue();
+                // Replace initial state so back button works correctly
+                history.replaceState({ view: 'home', param: null }, '', '#'); 
+            }
+        });
+    </script>
+</body>
+</html>
