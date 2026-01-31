@@ -55,6 +55,64 @@
 
         .hidden { display: none !important; }
 
+
+        /* Header */
+        /* Keep logo + meta stacked neatly */
+.logo-group{
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+}
+
+/* Meta line under logo */
+.header-meta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;           /* row gap, column gap */
+  align-items: center;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Each item: icon + text aligned */
+.meta-item{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+/* Icons */
+.meta-icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  opacity: 0.95;
+}
+
+/* Give tick icon a subtle accent (optional) */
+.meta-icon--tick{
+  color: var(--accent);
+}
+
+/* Make strong not too heavy */
+.header-meta strong{
+  font-weight: 700;
+}
+
+/* Mobile: stack items under logo nicely */
+@media (max-width: 640px){
+  .header-meta{
+    gap: 8px 14px;
+    font-size: 0.8rem;
+  }
+  .meta-item{
+    white-space: normal;
+  }
+}
+
         /* Footer */
        .site-footer{
   padding: 28px 0;
@@ -407,33 +465,70 @@
 <body>
 
     <!-- HEADER -->
-    <header>
-        <div class="container header-inner">
-            <a class="logo-group" onclick="router('home')">
-                <span class="logo-text">Goyal Zip Enterprises</span>
-            </a>
+   <header>
+  <div class="container header-inner">
+    <a class="logo-group" onclick="router('home')">
+      <span class="logo-text">Goyal Zip Enterprises</span>
 
-            <nav class="nav-desktop">
-                <a onclick="router('home')" class="nav-link">Home</a>
-                <a onclick="router('catalogue')" class="nav-link">Products</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#enquiry" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.75rem;">Enquiry</a>
-            </nav>
+      <!-- NEW: header meta line -->
+      <div class="header-meta">
+        <!-- Location -->
+        <span class="meta-item">
+          <span class="meta-icon" aria-hidden="true">
+            <!-- Location pin -->
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2c-3.86 0-7 3.14-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+            </svg>
+          </span>
+          Govind Puri, Delhi
+        </span>
 
-            <button class="mobile-toggle" onclick="toggleMobileMenu()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-        </div>
+        <!-- GST -->
+        <span class="meta-item">
+          <span class="meta-icon meta-icon--tick" aria-hidden="true">
+            <!-- Tick in circle -->
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm-1.1 14.2-3.6-3.6 1.4-1.4 2.2 2.2 4.8-4.8 1.4 1.4Z"/>
+            </svg>
+          </span>
+          GST No.: <strong>07AEQPG5014A1ZZ</strong>
+        </span>
 
-        <div id="mobile-menu" class="mobile-menu">
-            <a onclick="router('home'); toggleMobileMenu()">Home</a>
-            <a onclick="router('catalogue'); toggleMobileMenu()">Products</a>
-            <a href="#about" onclick="toggleMobileMenu()">About Us</a>
-            <a href="#enquiry" onclick="toggleMobileMenu()" style="color: var(--accent);">Make an Enquiry</a>
-        </div>
-    </header>
+        <!-- IEC -->
+        <span class="meta-item">
+          <span class="meta-icon meta-icon--tick" aria-hidden="true">
+            <!-- Tick in circle (same icon) -->
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm-1.1 14.2-3.6-3.6 1.4-1.4 2.2 2.2 4.8-4.8 1.4 1.4Z"/>
+            </svg>
+          </span>
+          IEC No.: <strong>AEQPG5014A</strong>
+        </span>
+      </div>
+    </a>
+
+    <nav class="nav-desktop">
+      <a onclick="router('home')" class="nav-link">Home</a>
+      <a onclick="router('catalogue')" class="nav-link">Products</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#enquiry" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.75rem;">Enquiry</a>
+    </nav>
+
+    <button class="mobile-toggle" onclick="toggleMobileMenu()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu">
+    <a onclick="router('home'); toggleMobileMenu()">Home</a>
+    <a onclick="router('catalogue'); toggleMobileMenu()">Products</a>
+    <a href="#about" onclick="toggleMobileMenu()">About Us</a>
+    <a href="#enquiry" onclick="toggleMobileMenu()" style="color: var(--accent);">Make an Enquiry</a>
+  </div>
+</header>
+
 
     <!-- DRAWER OVERLAY (UPDATED: SPLIT VIEW) -->
     <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()">
@@ -486,6 +581,9 @@
                         <h3 style="font-size: 1.125rem; margin-bottom: 16px; font-weight: 600;">Who We Are</h3>
                         <p class="sub-lead" style="margin: 0 0 24px 0;">
                             We are a leading manufacturer, supplier, and exporter of zippers, sliders, and garment accessories. Our products are approved by ITS and SGS testing labs.
+                        </p>
+                        <p class="sub-lead" style="margin: 0 0 24px 0;">
+                           We offer high-quality zippers at competitive prices, with reliable delivery within the promised timeframe. Our fully equipped manufacturing plant can meet demand across a wide range of zipper types, including invisible, nylon, coil, plastic moulded, and metal zippers. All zippers are produced and dyed in-house using high-temperature, high-pressure dyeing systems, ensuring consistent performance and compliance with international quality standards.
                         </p>
                         <h3 style="font-size: 1.125rem; margin-bottom: 16px; font-weight: 600;">Business Philosophy</h3>
                         <p class="sub-lead" style="margin: 0;">
