@@ -1,1065 +1,1098 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goyal Zip Enterprises | Industrial Fastening Systems</title>
-    
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* =========================================
-           PHASE 1: DESIGN SYSTEM (PRESERVED)
-           ========================================= */
-        :root {
-            /* Color System (Ice & Steel - Code 1) */
-            --bg-body: #ffffff;
-            --bg-alt:  #f0f9ff;
-            --bg-card: #ffffff;
-            --bg-dark:    #0c4a6e;
-            --text-main:  #0f172a;
-            --text-muted: #475569;
-            --accent: #0284c7;
-            --border: #e0f2fe;
-            
-            /* Typography (Code 2) */
-            --font-head: 'Montserrat', sans-serif;
-            --font-tech: 'JetBrains Mono', monospace;
-
-            /* Layout */
-            --container-width: 1280px;
-            --header-height: 80px;
-        }
-
-        /* Base Reset */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: var(--font-head);
-            color: var(--text-main);
-            background-color: var(--bg-body);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* Utilities */
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .hidden { display: none !important; }
-
-
-        /* Header */
-
-
-        .header-meta-row{ padding-bottom: 10px; }
-
-  .header-meta{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 18px;
-    align-items: center;
-    font-size: 0.85rem;
-    opacity: 0.9;
-  }
-
-  .meta-item{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-    cursor: default;
-  }
-
-  .meta-icon{
-    pointer-events: none; /* icon not clickable */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 0;
-  }
-
-  .meta-icon--tick{ color: var(--accent); }
-
-  .meta-link{
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .meta-link:hover{
-    text-decoration: underline;
-  }
-
-  .header-meta strong{ font-weight: 700; }
-
-  @media (max-width: 640px){
-    .meta-item{ white-space: normal; }
-    .header-meta{ font-size: 0.8rem; }
-  }
-        
-        /* Keep logo + meta stacked neatly */
-.logo-group{
-  display: inline-flex;
-  flex-direction: column;
-  gap: 8px;
-  text-decoration: none;
-}
-
-/* Meta line under logo */
-.header-meta{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px 18px;           /* row gap, column gap */
-  align-items: center;
-  font-size: 0.85rem;
-  opacity: 0.9;
-}
-
-/* Each item: icon + text aligned */
-.meta-item{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}
-
-/* Icons */
-.meta-icon{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 0;
-  opacity: 0.95;
-}
-
-/* Give tick icon a subtle accent (optional) */
-.meta-icon--tick{
-  color: var(--accent);
-}
-
-/* Make strong not too heavy */
-.header-meta strong{
-  font-weight: 700;
-}
-
-/* Mobile: stack items under logo nicely */
-@media (max-width: 640px){
-  .header-meta{
-    gap: 8px 14px;
-    font-size: 0.8rem;
-  }
-  .meta-item{
-    white-space: normal;
-  }
-}
-
-        /* Footer */
-       .site-footer{
-  padding: 28px 0;
-  border-top: 1px solid rgba(0,0,0,0.08);
-  background: #fff;
-  color: var(--text-main);
-  font-family: inherit; /* keeps it consistent */
-}
-
-.footer-inner{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 48px;
-}
-
-.footer-col{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footer-title{
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-}
-
-.footer-subtitle{
-  font-size: 14px;
-  opacity: 0.85;
-  margin-top: -4px;
-}
-
-.footer-row{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: inherit;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.footer-row:hover{
-  text-decoration: underline;
-}
-
-.footer-icon{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.9;
-}
-
-.footer-muted{
-  display: block;
-  font-size: 13px;
-  opacity: 0.7;
-  margin-top: 3px;
-}
-
-.footer-right{
-  align-items: flex-end;
-  text-align: right;
-}
-
-.footer-copy{
-  margin-top: 8px;
-  font-size: 13px;
-  opacity: 0.7;
-}
-
-/* Mobile */
-@media (max-width: 640px){
-  .footer-inner{
-    flex-direction: column;
-    gap: 20px;
-  }
-  .footer-right{
-    align-items: flex-start;
-    text-align: left;
-  }
-}
-
-
-        /* Typography */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            color: var(--text-main);
-        }
-        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-        h2 { font-size: 2.25rem; }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            border-radius: 2px;
-        }
-
-        .btn-primary {
-            background-color: var(--bg-dark);
-            color: white;
-            border: 1px solid var(--bg-dark);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-1px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background-color: white;
-        }
-
-        /* =========================================
-           PHASE 2: SKELETON & NAVIGATION (PRESERVED)
-           ========================================= */
-
-        /* HEADER */
-        header {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            height: var(--header-height);
-            background-color: rgba(240, 249, 255, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
-
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .logo-group {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .logo-text {
-            font-weight: 800;
-            font-size: 1.125rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-main);
-        }
-
-        /* NAV */
-        .nav-desktop { display: none; gap: 32px; align-items: center; }
-        .nav-link { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; cursor: pointer; }
-        .nav-link:hover { color: var(--accent); }
-
-        .mobile-toggle { display: block; background: none; border: none; cursor: pointer; color: var(--text-main); }
-        .mobile-menu { position: fixed; top: var(--header-height); left: 0; width: 100%; background-color: var(--bg-body); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; z-index: 999; }
-        .mobile-menu.open { max-height: 300px; }
-        .mobile-menu a { display: block; padding: 16px 24px; text-decoration: none; color: var(--text-main); font-weight: 600; border-bottom: 1px solid var(--bg-alt); }
-
-        /* VIEWS & FOOTER */
-        main { min-height: 80vh; position: relative; }
-        footer { background-color: var(--bg-body); padding: 60px 0; border-top: 1px solid var(--border); margin-top: auto; }
-        .footer-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; }
-        .footer-info p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 6px; }
-
-        @media (min-width: 768px) {
-            .nav-desktop { display: flex; }
-            .mobile-toggle { display: none; }
-            .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-start; }
-        }
-
-        /* =========================================
-           PHASE 3: HYBRID PRODUCT ENGINE (UPDATED FOR SPLIT DRAWER)
-           ========================================= */
-        
-        #view-catalogue { background-color: var(--bg-alt); min-height: 100vh; padding-bottom: 120px; }
-        .catalogue-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 40px; }
-        
-        .product-card { background-color: var(--bg-card); border: 1px solid var(--border); padding: 40px 32px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 380px; position: relative; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; border-radius: 2px; }
-        .product-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(2, 132, 199, 0.08); }
-        .product-card .card-content { position: relative; z-index: 2; }
-        .product-card .card-tag { display: inline-block; background-color: var(--bg-alt); color: var(--accent); font-size: 0.7rem; font-weight: 700; padding: 6px 12px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; border: 1px solid var(--border); }
-
-        /* DRAWER UPDATES: Split Layout */
-        .drawer-overlay { position: fixed; top: 0; right: 0; width: 100%; height: 100vh; background-color: rgba(15, 23, 42, 0.4); backdrop-filter: blur(4px); z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .drawer-overlay.open { opacity: 1; visibility: visible; }
-        
-        /* UPDATED: Full Screen Drawer for maximum image size */
-        .drawer-panel { 
-            position: absolute; top: 0; right: 0; 
-            width: 100%; /* Full width */
-            height: 100%; background-color: white; 
-            box-shadow: -20px 0 50px rgba(0,0,0,0.1); 
-            transform: translateX(100%); 
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-            display: flex; flex-direction: column; 
-            border-left: 1px solid var(--border); 
-        }
-        .drawer-overlay.open .drawer-panel { transform: translateX(0); }
-
-        /* Split container */
-        .drawer-split {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .drawer-left {
-            background-color: var(--bg-alt);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            min-height: 50vh; /* UPDATED: Takes up half screen on mobile */
-            overflow: hidden;
-        }
-
-        .drawer-img-actual {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0; left: 0;
-        }
-
-        .drawer-right {
-            flex-grow: 1;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            background: white;
-            position: relative;
-        }
-
-        /* Adjust header to be inside the right panel or floating? 
-           Let's put the header inside the right panel for cleaner split */
-        .drawer-header { padding: 32px 40px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; background: rgba(255,255,255,0.98); position: sticky; top: 0; z-index: 10; }
-        .drawer-close { background: none; border: 1px solid var(--border); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); font-size: 1.5rem; transition: all 0.2s; }
-        .drawer-close:hover { color: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
-        .drawer-body { padding: 40px; flex-grow: 1; }
-        
-        .spec-row { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--border); }
-        .spec-label { font-family: var(--font-tech); color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; }
-        .spec-value { font-family: var(--font-tech); color: var(--text-main); font-weight: 700; font-size: 1rem; }
-
-        @media (min-width: 768px) { 
-            .catalogue-grid { grid-template-columns: 1fr 1fr; gap: 32px; } 
-            
-            /* Desktop Split */
-            .drawer-split { flex-direction: row; }
-            /* UPDATED: 50/50 Split for larger image visibility */
-            .drawer-left { width: 50%; height: 100%; min-height: auto; border-right: 1px solid var(--border); }
-            .drawer-right { width: 50%; }
-        }
-
-        /* =========================================
-           PHASE 4: CONTENT & TRUST (UPDATED)
-           ========================================= */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Updated Hero: Split Layout */
-        /* Reduced padding from 100px to 60px top */
-        .hero-section { padding: 60px 0 100px; text-align: left; }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero-visual-placeholder {
-            background-color: var(--bg-alt);
-            border: 1px solid var(--border);
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 2px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Marquee */
-        .marquee-section { background-color: var(--bg-dark); color: white; padding: 24px 0; overflow: hidden; white-space: nowrap; }
-        .marquee-track { display: flex; gap: 60px; animation: marquee 80s linear infinite; width: max-content; }
-        .marquee-item { font-family: var(--font-tech); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 12px; opacity: 0.9; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        
-        /* Features */
-        .feature-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 60px; margin-bottom: 0; }
-        .feature-card { background: var(--bg-card); padding: 32px; border: 1px solid var(--border); border-left: 4px solid var(--accent); transition: transform 0.3s ease; }
-        .feature-card:hover { transform: translateY(-4px); }
-        .feature-icon { width: 48px; height: 48px; color: var(--accent); margin-bottom: 24px; }
-        
-        /* Lab Strip - Adjusted to stick to features */
-        .lab-strip { background-color: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 0; text-align: center; margin-top: 0; }
-        .lab-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; margin-top: 32px; }
-        .lab-item { display: flex; align-items: center; font-family: var(--font-tech); font-size: 0.9rem; color: var(--text-main); font-weight: 500; }
-        
-        @media (min-width: 768px) { 
-            .feature-grid { grid-template-columns: repeat(3, 1fr); } 
-            /* Reduced desktop padding from 140px to 100px */
-            .hero-section { padding: 100px 0; } 
-            .hero-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
-        }
-
-        /* =========================================
-           PHASE 5: COMMAND CENTER (PRESERVED)
-           ========================================= */
-        #enquiry { background-color: var(--bg-dark); padding: 100px 0; color: white; text-align: center; }
-        .enquiry-container { max-width: 680px; margin: 0 auto; }
-        .form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
-        .form-input { width: 100%; background: rgba(255, 255, 255, 0.95); border: 1px solid transparent; border-radius: 4px; padding: 16px 20px; color: var(--text-main); font-family: var(--font-head); font-size: 1rem; transition: all 0.3s ease; margin-bottom: 16px; }
-        .form-input:focus { outline: none; background: white; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.3); }
-        .form-input.error { border-color: #ef4444; background: #fef2f2; }
-        .success-overlay { display: none; padding: 60px 0; animation: fadeIn 0.6s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        #toast { visibility: hidden; min-width: 320px; background-color: white; color: var(--text-main); padding: 16px 24px; border-radius: 4px; position: fixed; z-index: 10000; left: 50%; bottom: 40px; transform: translateX(-50%); font-size: 0.9rem; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.2); opacity: 0; transition: all 0.3s; border-left: 4px solid var(--accent); }
-        #toast.show { visibility: visible; opacity: 1; bottom: 60px; }
-        @media (min-width: 768px) { .form-grid { grid-template-columns: 1fr 1fr; } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goyal Zip Enterprises | Industrial Fastening Systems</title>
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       PHASE 1: DESIGN SYSTEM
+       ========================================= */
+    :root {
+      --bg-body: #ffffff;
+      --bg-alt:  #f0f9ff;
+      --bg-card: #ffffff;
+      --bg-dark: #0c4a6e;
+
+      --text-main:  #0f172a;
+      --text-muted: #475569;
+
+      --accent: #0284c7;
+      --border: #e0f2fe;
+
+      --font-head: 'Montserrat', sans-serif;
+      --font-tech: 'JetBrains Mono', monospace;
+
+      --container-width: 1280px;
+      --header-height: 80px; /* kept for compatibility, NOT used for layout */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-head);
+      color: var(--text-main);
+      background-color: var(--bg-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hidden { display: none !important; }
+
+    .tech-mono { font-family: var(--font-tech); }
+    .sub-lead { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+
+    /* =========================================
+       BUTTONS / TYPOGRAPHY
+       ========================================= */
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text-main);
+    }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+    h2 { font-size: 2.25rem; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    .btn-primary {
+      background-color: var(--bg-dark);
+      color: white;
+      border: 1px solid var(--bg-dark);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background-color: white;
+    }
+
+    /* =========================================
+       HEADER (FIXED: NO FIXED HEIGHT, META INSIDE)
+       ========================================= */
+    .site-header{
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: rgba(240, 249, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    /* Top row: logo + nav */
+    .header-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0 10px; /* creates natural height */
+    }
+
+    .logo-group{
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .logo-text{
+      font-weight: 800;
+      font-size: 1.125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-main);
+    }
+
+    .nav-desktop { display: none; gap: 32px; align-items: center; }
+    .nav-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+    .nav-link:hover { color: var(--accent); }
+
+    .mobile-toggle{
+      display: block;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    /* Meta row */
+    .header-meta-row{ padding: 0 0 12px; }
+    .header-meta{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      opacity: 0.95;
+    }
+
+    .meta-item{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      cursor: default;
+    }
+
+    .meta-icon{
+      pointer-events: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
+      opacity: 0.95;
+    }
+    .meta-icon--tick{ color: var(--accent); }
+
+    .meta-link{
+      color: inherit;
+      text-decoration: none;
+    }
+    .meta-link:hover{ text-decoration: underline; }
+
+    .header-meta strong{ font-weight: 700; }
+
+    /* MOBILE MENU (FIXED: sits below full header) */
+    .mobile-menu{
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-body);
+      border-bottom: 1px solid var(--border);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      z-index: 999;
+    }
+    .mobile-menu.open{ max-height: 360px; }
+
+    .mobile-menu a{
+      display: block;
+      padding: 16px 24px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      border-bottom: 1px solid var(--bg-alt);
+    }
+
+    @media (min-width: 768px) {
+      .nav-desktop { display: flex; }
+      .mobile-toggle { display: none; }
+    }
+
+    @media (max-width: 640px){
+      .meta-item{ white-space: normal; }
+      .header-meta{ font-size: 0.8rem; }
+    }
+
+    /* =========================================
+       LAYOUT
+       ========================================= */
+    main { min-height: 80vh; position: relative; }
+
+    /* =========================================
+       CATALOGUE GRID
+       ========================================= */
+    #view-catalogue { background-color: var(--bg-alt); min-height: 100vh; padding-bottom: 120px; }
+    .catalogue-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 40px; }
+
+    .product-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 380px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(2, 132, 199, 0.08);
+    }
+    .product-card .card-content { position: relative; z-index: 2; }
+    .product-card .card-tag {
+      display: inline-block;
+      background-color: var(--bg-alt);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    /* =========================================
+       DRAWER (SPLIT)
+       ========================================= */
+    .drawer-overlay {
+      position: fixed; top: 0; right: 0;
+      width: 100%; height: 100vh;
+      background-color: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      opacity: 0; visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .drawer-overlay.open { opacity: 1; visibility: visible; }
+
+    .drawer-panel{
+      position: absolute; top: 0; right: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      box-shadow: -20px 0 50px rgba(0,0,0,0.1);
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border);
+    }
+    .drawer-overlay.open .drawer-panel { transform: translateX(0); }
+
+    .drawer-split{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .drawer-left{
+      background-color: var(--bg-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 50vh;
+      overflow: hidden;
+    }
+
+    .drawer-img-actual{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    .drawer-right{
+      flex-grow: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      position: relative;
+    }
+
+    .drawer-header{
+      padding: 32px 40px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.98);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .drawer-close{
+      background: none;
+      border: 1px solid var(--border);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      transition: all 0.2s;
+    }
+    .drawer-close:hover{
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: rotate(90deg);
+    }
+    .drawer-body{ padding: 40px; flex-grow: 1; }
+
+    .spec-row{
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+    .spec-label{
+      font-family: var(--font-tech);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .spec-value{
+      font-family: var(--font-tech);
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: right;
+    }
+
+    @media (min-width: 768px) {
+      .catalogue-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .drawer-split{ flex-direction: row; }
+      .drawer-left{ width: 50%; height: 100%; min-height: auto; border-right: 1px solid var(--border); }
+      .drawer-right{ width: 50%; }
+    }
+
+    /* =========================================
+       CONTENT + TRUST
+       ========================================= */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    .hero-section { padding: 60px 0 100px; text-align: left; }
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-visual-placeholder{
+      background-color: var(--bg-alt);
+      border: 1px solid var(--border);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .marquee-section { background-color: var(--bg-dark); color: white; padding: 24px 0; overflow: hidden; white-space: nowrap; }
+    .marquee-track { display: flex; gap: 60px; animation: marquee 80s linear infinite; width: max-content; }
+    .marquee-item { font-family: var(--font-tech); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 12px; opacity: 0.9; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .feature-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 60px; margin-bottom: 0; }
+    .feature-card { background: var(--bg-card); padding: 32px; border: 1px solid var(--border); border-left: 4px solid var(--accent); transition: transform 0.3s ease; }
+    .feature-card:hover { transform: translateY(-4px); }
+    .feature-icon { width: 48px; height: 48px; color: var(--accent); margin-bottom: 24px; }
+
+    .lab-strip { background-color: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 0; text-align: center; margin-top: 0; }
+    .lab-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; margin-top: 32px; }
+    .lab-item { display: flex; align-items: center; font-family: var(--font-tech); font-size: 0.9rem; color: var(--text-main); font-weight: 500; }
+
+    @media (min-width: 768px) {
+      .feature-grid { grid-template-columns: repeat(3, 1fr); }
+      .hero-section { padding: 100px 0; }
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+    }
+
+    /* =========================================
+       ENQUIRY
+       ========================================= */
+    #enquiry { background-color: var(--bg-dark); padding: 100px 0; color: white; text-align: center; }
+    .enquiry-container { max-width: 680px; margin: 0 auto; }
+    .form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid transparent;
+      border-radius: 4px;
+      padding: 16px 20px;
+      color: var(--text-main);
+      font-family: var(--font-head);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      margin-bottom: 16px;
+    }
+    .form-input:focus { outline: none; background: white; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.3); }
+    .form-input.error { border-color: #ef4444; background: #fef2f2; }
+    .success-overlay { display: none; padding: 60px 0; animation: fadeIn 0.6s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    #toast {
+      visibility: hidden;
+      min-width: 320px;
+      background-color: white;
+      color: var(--text-main);
+      padding: 16px 24px;
+      border-radius: 4px;
+      position: fixed;
+      z-index: 10000;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: all 0.3s;
+      border-left: 4px solid var(--accent);
+    }
+    #toast.show { visibility: visible; opacity: 1; bottom: 60px; }
+    @media (min-width: 768px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* =========================================
+       FOOTER (FIXED: removed conflicting generic footer rules)
+       ========================================= */
+    .site-footer{
+      padding: 28px 0;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      background: #fff;
+      color: var(--text-main);
+      font-family: inherit;
+    }
+
+    .footer-inner{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+    }
+
+    .footer-col{ display: flex; flex-direction: column; gap: 10px; }
+
+    .footer-title{
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+    }
+
+    .footer-subtitle{
+      font-size: 14px;
+      opacity: 0.85;
+      margin-top: -4px;
+    }
+
+    .footer-row{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .footer-row:hover{ text-decoration: underline; }
+
+    .footer-icon{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+      line-height: 0;
+    }
+
+    .footer-right{
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .footer-copy{
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 640px){
+      .footer-inner{ flex-direction: column; gap: 20px; }
+      .footer-right{ align-items: flex-start; text-align: left; }
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- HEADER -->
-  <header>
-  <!-- Top row: Logo left, nav right -->
-  <div class="container header-inner">
-    <a class="logo-group" onclick="router('home')">
-      <span class="logo-text">Goyal Zip Enterprises</span>
-    </a>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo-group" onclick="router('home')">
+        <span class="logo-text">Goyal Zip Enterprises</span>
+      </a>
 
-    <nav class="nav-desktop">
-      <a onclick="router('home')" class="nav-link">Home</a>
-      <a onclick="router('catalogue')" class="nav-link">Products</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#enquiry" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.75rem;">Enquiry</a>
-    </nav>
+      <nav class="nav-desktop">
+        <a onclick="router('home')" class="nav-link">Home</a>
+        <a onclick="router('catalogue')" class="nav-link">Products</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#enquiry" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.75rem;">Enquiry</a>
+      </nav>
 
-    <button class="mobile-toggle" onclick="toggleMobileMenu()">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  </div>
+      <button class="mobile-toggle" onclick="toggleMobileMenu()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
 
-  <!-- Meta row under header -->
-  <div class="container header-meta-row">
-    <div class="header-meta">
+    <div class="container header-meta-row">
+      <div class="header-meta">
 
-      <!-- Location: icon NOT clickable, text clickable -->
-      <span class="meta-item">
-        <span class="meta-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M12 2c-3.86 0-7 3.14-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
-          </svg>
+        <span class="meta-item">
+          <span class="meta-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2c-3.86 0-7 3.14-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+            </svg>
+          </span>
+          <a class="meta-link" href="https://maps.app.goo.gl/toTtXdGVvwigduFy8" target="_blank" rel="noopener">
+            Govind Puri, Delhi
+          </a>
         </span>
 
-        <a class="meta-link"
+        <span class="meta-item">
+          <span class="meta-icon meta-icon--tick" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm-1.1 14.2-3.6-3.6 1.4-1.4 2.2 2.2 4.8-4.8 1.4 1.4Z"/>
+            </svg>
+          </span>
+          <span>GST No.: <strong>07AEQPG5014A1ZZ</strong></span>
+        </span>
+
+        <span class="meta-item">
+          <span class="meta-icon meta-icon--tick" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm-1.1 14.2-3.6-3.6 1.4-1.4 2.2 2.2 4.8-4.8 1.4 1.4Z"/>
+            </svg>
+          </span>
+          <span>IEC No.: <strong>AEQPG5014A</strong></span>
+        </span>
+
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu">
+      <a onclick="router('home'); toggleMobileMenu()">Home</a>
+      <a onclick="router('catalogue'); toggleMobileMenu()">Products</a>
+      <a href="#about" onclick="toggleMobileMenu()">About Us</a>
+      <a href="#enquiry" onclick="toggleMobileMenu()" style="color: var(--accent);">Make an Enquiry</a>
+    </div>
+  </header>
+
+  <!-- DRAWER OVERLAY (UPDATED: SPLIT VIEW) -->
+  <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()">
+    <div class="drawer-panel" onclick="event.stopPropagation()">
+      <div class="drawer-split">
+        <!-- LHS: Image -->
+        <div class="drawer-left">
+          <img id="drawer-img" src="" alt="Product Detail" class="drawer-img-actual"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div style="display:none; flex-direction:column; align-items:center; color: var(--text-muted);">
+            <span style="font-size:3rem;">⚙️</span>
+            <span class="tech-mono" style="margin-top:12px;">Image Unavailable</span>
+          </div>
+        </div>
+
+        <!-- RHS: Content -->
+        <div class="drawer-right">
+          <div class="drawer-header">
+            <div>
+              <span id="drawer-tag" class="tech-mono" style="color: var(--accent);">Category</span>
+              <h2 id="drawer-title" style="font-size: 1.75rem; margin-top: 8px;">Product Name</h2>
+            </div>
+            <button class="drawer-close" onclick="closeDrawer()">&times;</button>
+          </div>
+
+          <div class="drawer-body">
+            <p id="drawer-desc" class="sub-lead" style="margin-bottom: 48px; font-size: 1rem;">Description text...</p>
+            <div style="margin-bottom: 48px;">
+              <h4 class="tech-mono" style="color: var(--text-main); margin-bottom: 24px; font-weight: 700;">Technical Specifications</h4>
+              <div id="drawer-specs-container"></div>
+            </div>
+            <button onclick="enquireFromDrawer()" class="btn btn-primary" style="width: 100%; padding: 20px;">Request Technical Documentation</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT AREA -->
+  <main>
+    <!-- VIEW: HOME -->
+    <div id="view-home">
+
+      <!-- HERO -->
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div class="reveal">
+            <span class="tech-mono" style="color: var(--accent); display: block; margin-bottom: 16px;">Since 1994</span>
+            <h1 style="margin-bottom: 24px;">World-Class<br>Quality Zippers</h1>
+            <h3 style="font-size: 1.125rem; margin-bottom: 16px; font-weight: 600;">Who We Are</h3>
+            <p class="sub-lead" style="margin: 0 0 24px 0;">
+              We are a leading manufacturer, supplier, and exporter of zippers, sliders, and garment accessories. Our products are approved by ITS and SGS testing labs.
+            </p>
+            <p class="sub-lead" style="margin: 0 0 24px 0;">
+              We offer high-quality zippers at competitive prices, with reliable delivery within the promised timeframe. Our fully equipped manufacturing plant can meet demand across a wide range of zipper types, including invisible, nylon, coil, plastic moulded, and metal zippers. All zippers are produced and dyed in-house using high-temperature, high-pressure dyeing systems, ensuring consistent performance and compliance with international quality standards.
+            </p>
+            <h3 style="font-size: 1.125rem; margin-bottom: 16px; font-weight: 600;">Business Philosophy</h3>
+            <p class="sub-lead" style="margin: 0;">
+              Driven by the ambition to meet the ever-changing requirements of the market, we are committed to offering excellent products with an easy ordering process.
+            </p>
+          </div>
+
+          <div class="hero-visual-placeholder reveal" style="transition-delay: 0.1s;">
+            <span class="tech-mono" style="color: var(--text-muted); font-size: 1rem;">[Factory Floor / Operations Image]</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MARQUEE -->
+      <div class="marquee-section">
+        <div class="marquee-track">
+          <div class="marquee-item"><span>✦</span> ISO 9001 CERTIFIED</div>
+          <div class="marquee-item"><span>✦</span> OEKO-TEX STANDARD</div>
+          <div class="marquee-item"><span>✦</span> NICKEL FREE</div>
+          <div class="marquee-item"><span>✦</span> AZO FREE DYES</div>
+          <div class="marquee-item"><span>✦</span> HIGH TENSILE STRENGTH</div>
+          <div class="marquee-item"><span>✦</span> LEAD-FREE</div>
+          <div class="marquee-item"><span>✦</span> SGS TESTED</div>
+          <div class="marquee-item"><span>✦</span> REACH DYEING</div>
+          <div class="marquee-item"><span>✦</span> ULTRASONIC TOP BOTTOM</div>
+          <div class="marquee-item"><span>✦</span> ISO 9001 CERTIFIED</div>
+          <div class="marquee-item"><span>✦</span> OEKO-TEX STANDARD</div>
+          <div class="marquee-item"><span>✦</span> NICKEL FREE</div>
+          <div class="marquee-item"><span>✦</span> AZO FREE DYES</div>
+          <div class="marquee-item"><span>✦</span> HIGH TENSILE STRENGTH</div>
+          <div class="marquee-item"><span>✦</span> LEAD FREE</div>
+          <div class="marquee-item"><span>✦</span> SGS TESTED</div>
+          <div class="marquee-item"><span>✦</span> REACH DYEING</div>
+          <div class="marquee-item"><span>✦</span> ULTRASONIC TOP BOTTOM</div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS PREVIEW -->
+      <section style="padding: 100px 0; background-color: var(--bg-body);">
+        <div class="container reveal">
+          <div style="text-align: center; margin-bottom: 60px;">
+            <span class="tech-mono" style="color: var(--text-muted);">Our Inventory</span>
+            <h2 style="margin-top: 12px;">Core Product Categories</h2>
+          </div>
+          <div id="home-products-preview" class="catalogue-grid"></div>
+          <div style="text-align: center; margin-top: 60px;">
+            <button onclick="router('catalogue')" class="btn btn-outline">Explore Full Catalogue</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY US + LAB STRIP -->
+      <section id="about" style="padding: 80px 0 0; background-color: var(--bg-alt); border-top: 1px solid var(--border);">
+        <div class="container reveal">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <span class="tech-mono" style="color: var(--accent);">Our Capabilities</span>
+            <h2 style="margin-top: 12px;">Why Partner With Us</h2>
+          </div>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19.4 15.4a2 2 0 00-1-.5l-2.4-.5a6 6 0 00-3.9.5l-.3.2a6 6 0 01-3.9.5l-2-.2a2 2 0 00-1.8.5M8 4h8l-1 1v5.2a2 2 0 00.6 1.4l5 5c1.3 1.3.4 3.4-1.4 3.4H4.8c-1.8 0-2.7-2.2-1.4-3.4l5-5A2 2 0 009 10.2V5L8 4z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Chemical Safety</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 12px;">
+                We use non-toxic paints and AZO-free dyes. Rigorous testing for Nickel-free compliance ensures global export readiness.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Zero-Defect Policy</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 12px;">
+                Statistical quality control. Every batch undergoes resistance testing for pull-off, twist, and lateral load.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Production Power</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 12px;">
+                100% power backup ensures uninterrupted production lines. We leverage German and Taiwan machinery to meet deadlines.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lab-strip reveal" style="margin-top: 0; padding-top: 40px; padding-bottom: 80px; border-top: none; background-color: transparent;">
+          <div class="container">
+            <div style="width: 100%; height: 1px; background-color: var(--border); margin-bottom: 40px; opacity: 0.5;"></div>
+            <span class="tech-mono" style="color: var(--accent);">Standardized Testing Protocol</span>
+            <div class="lab-grid">
+              <div class="lab-item"><span style="color: var(--accent); margin-right: 8px;">✓</span> Chain Cross-Wire Strength</div>
+              <div class="lab-item"><span style="color: var(--accent); margin-right: 8px;">✓</span> Top/Bottom Stop Holding</div>
+              <div class="lab-item"><span style="color: var(--accent); margin-right: 8px;">✓</span> Slider Pull-Off Resistance</div>
+              <div class="lab-item"><span style="color: var(--accent); margin-right: 8px;">✓</span> Torque/Twist Resistance</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENQUIRY -->
+      <section id="enquiry">
+        <div class="container enquiry-container reveal">
+          <h2 style="margin-bottom: 16px;">Start Your Project</h2>
+          <p style="color: #cbd5e1; margin-bottom: 40px; font-size: 1.1rem;">
+            Connect with our sales specialists for volume logistics and technical documentation.
+          </p>
+
+          <form id="enquiryForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-grid">
+              <input type="text" name="name" id="field-name" class="form-input" placeholder="Full Name">
+              <input type="tel" name="phone" id="field-phone" class="form-input" placeholder="Phone Number">
+            </div>
+            <input type="email" name="email" id="field-email" class="form-input" placeholder="Work Email">
+            <textarea name="message" id="enquiry-message" class="form-input" rows="5" style="resize: none;" placeholder="Project requirements..."></textarea>
+
+            <div class="hidden"><input type="text" name="website" tabindex="-1"></div>
+
+            <button type="submit" id="submit-btn" class="btn btn-primary"
+              style="width: 100%; padding: 18px; font-weight: 700; background-color: var(--accent); border-color: var(--accent);">
+              Send Enquiry &rsaquo;
+            </button>
+          </form>
+
+          <div id="success-state" class="success-overlay">
+            <div style="font-size: 4rem; color: #4ade80; margin-bottom: 16px;">✓</div>
+            <h2 style="margin-bottom: 12px;">Enquiry Received</h2>
+            <p style="color: #cbd5e1; margin-bottom: 32px;">Our engineering team will review your requirements and follow up shortly.</p>
+            <button onclick="resetForm()" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Send Another</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- VIEW: CATALOGUE -->
+    <div id="view-catalogue" class="hidden">
+      <div class="container" style="padding-top: 80px;">
+        <div style="max-width: 700px;">
+          <span class="tech-mono" style="color: var(--text-muted);">Inventory</span>
+          <h2 style="margin-top: 12px; margin-bottom: 16px;">The Collection</h2>
+          <p class="sub-lead">Engineered for reliability. Organized by material composition and industrial application.</p>
+        </div>
+        <div id="catalogue-grid" class="catalogue-grid"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div class="footer-col footer-left">
+        <div class="footer-title">GOYAL ZIP ENTERPRISES</div>
+        <div class="footer-subtitle">B2B Zipper Specialists</div>
+
+        <a class="footer-row footer-location"
            href="https://maps.app.goo.gl/toTtXdGVvwigduFy8"
            target="_blank" rel="noopener"
-           aria-label="Open Govind Puri location in Google Maps">
-          Govind Puri, Delhi
+           aria-label="Open location in Google Maps">
+
+          <span class="footer-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M12 2c-3.86 0-7 3.14-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+            </svg>
+          </span>
+
+          <span>Govind Puri, New Delhi, 110019</span>
         </a>
-      </span>
+      </div>
 
-      <!-- GST: not clickable -->
-      <span class="meta-item">
-        <span class="meta-icon meta-icon--tick" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm-1.1 14.2-3.6-3.6 1.4-1.4 2.2 2.2 4.8-4.8 1.4 1.4Z"/>
-          </svg>
-        </span>
-        <span>GST No.: <strong>07AEQPG5014A1ZZ</strong></span>
-      </span>
+      <div class="footer-col footer-right">
+        <a class="footer-row" href="tel:+919582320581" aria-label="Call +91 95823 20581">
+          <span class="footer-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z"/>
+            </svg>
+          </span>
+          <span>+91 95823 20581</span>
+        </a>
 
-      <!-- IEC: not clickable -->
-      <span class="meta-item">
-        <span class="meta-icon meta-icon--tick" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm-1.1 14.2-3.6-3.6 1.4-1.4 2.2 2.2 4.8-4.8 1.4 1.4Z"/>
-          </svg>
-        </span>
-        <span>IEC No.: <strong>AEQPG5014A</strong></span>
-      </span>
+        <a class="footer-row" href="tel:+919560725779" aria-label="Call +91 95607 25779">
+          <span class="footer-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z"/>
+            </svg>
+          </span>
+          <span>+91 95607 25779</span>
+        </a>
+
+        <a class="footer-row" href="mailto:goyalzippers@gmail.com" aria-label="Email goyalzippers@gmail.com">
+          <span class="footer-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </span>
+          <span>goyalzippers@gmail.com</span>
+        </a>
+
+        <div class="footer-copy">© 2007 Goyal Enterprises.</div>
+      </div>
 
     </div>
-  </div>
+  </footer>
 
-  <div id="mobile-menu" class="mobile-menu">
-    <a onclick="router('home'); toggleMobileMenu()">Home</a>
-    <a onclick="router('catalogue'); toggleMobileMenu()">Products</a>
-    <a href="#about" onclick="toggleMobileMenu()">About Us</a>
-    <a href="#enquiry" onclick="toggleMobileMenu()" style="color: var(--accent);">Make an Enquiry</a>
-  </div>
-</header>
+  <!-- TOAST -->
+  <div id="toast"></div>
 
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // --- DATA LAYER ---
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybUN0eFjBmoNGJtyohIP9KUx-HpIhwNZsSiUWwWmsz5I6cDZn4DI7cJuFZiGU5rpZG/exec";
 
-    <!-- DRAWER OVERLAY (UPDATED: SPLIT VIEW) -->
-    <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()">
-        <div class="drawer-panel" onclick="event.stopPropagation()">
-            <div class="drawer-split">
-                <!-- LHS: Image -->
-                <div class="drawer-left">
-                    <img id="drawer-img" src="" alt="Product Detail" class="drawer-img-actual" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div style="display:none; flex-direction:column; align-items:center; color: var(--text-muted);">
-                        <span style="font-size:3rem;">⚙️</span>
-                        <span class="tech-mono" style="margin-top:12px;">Image Unavailable</span>
-                    </div>
-                </div>
+    const products = [
+      { id: 'knitted-concealed', image: 'knitted-concealed.jpg', name: 'Knitted Concealed Zippers', type: 'Concealed', specs: { 'Sizes': '#3, #4', 'Stopper': 'Ultrasonic', 'Tape': 'Knitted Synthetic' }, description: 'The art of invisibility. Seamless integration for haute couture and high-end fashion apparel.' },
+      { id: 'woven-concealed', image: 'woven-concealed.jpg', name: 'Woven Concealed Zippers', type: 'Concealed', specs: { 'Tensile Strength': 'High', 'Tape': 'Woven High-Density', 'Grade': 'Premium Export' }, description: 'Engineered subtlety. A high-density weave designed for uncompromising silhouettes and industrial-grade durability.' },
+      { id: 'plastic-open', image: 'plastic-open.jpg', name: 'Plastic Moulded Open-End', type: 'Plastic', specs: { 'Sizes': '#3, #5, #8', 'Teeth': 'Interlocking Resin', 'Usage': 'Heavy Purpose' }, description: 'Rigorously tested performance. Durable fasteners built for the high-intensity demands of professional sportswear.' },
+      { id: 'plastic-close', image: 'plastic-close.jpg', name: 'Plastic Moulded Close-End', type: 'Plastic', specs: { 'Strength': 'Industrial', 'Variations': 'Versatile Shapes', 'Stopper': 'Reinforced' }, description: 'Architectural integrity. Reliable strength for structural bags, technical coats, and heavy-duty industrial applications.' },
+      { id: 'metal-close', image: 'metal-close.jpg', name: 'Metal Close-End Zippers', type: 'Metal', specs: { 'Material': 'Golden Brass', 'Finish': 'Antique Polish', 'Lock': 'Auto-lock Mechanism' }, description: 'Refined heritage. Hand-polished metal components that provide the ultimate technical statement for premium denim.' },
+      { id: 'metal-open', image: 'metal-open.jpg', name: 'Metal Open-End Zippers', type: 'Metal', specs: { 'Durability': 'Extreme', 'Join Type': 'Temporary', 'Grade': 'Camping / Military' }, description: 'Industrial grade unyielding durability. Designed for the rigors of global exploration and heavy equipment.' },
+      { id: 'cfc-close', image: 'cfc-close.jpg', name: 'CFC Close-End Zippers', type: 'CFC', specs: { 'Sizes': '#3 through #10', 'Function': 'Non-separating', 'Quality': 'ISO 9001' }, description: 'Steadfast utility. Precision closure systems manufactured to exacting standards for high-traffic luggage.' },
+      { id: 'cfc-zippers', image: 'cfc-zippers.jpg', name: 'CFC Zippers (General)', type: 'CFC', specs: { 'Compliance': 'Nickel Free', 'Pin': 'Moulded Box', 'Resistance': 'Corrosion Proof' }, description: 'Safety by design. Nickel-free precision components for everyday excellence and strict chemical compliance.' },
+      { id: 'poly-coil', image: 'poly-coil.jpg', name: 'Polyester Coil Zippers', type: 'Coil', specs: { 'Chain': 'Flexible Poly', 'Weight': 'Lightweight', 'Pin': 'Moulded Box' }, description: 'Fluid motion. The flexible, lightweight standard for contemporary luxury accessories and everyday carry.' },
+      { id: 'sliders', image: 'sliders.jpg', name: 'Sliders And Pullers', type: 'Accessories', specs: { 'Shape': 'Custom Geometry', 'Sizes': 'Universal Fit', 'Material': 'Zinc Alloy' }, description: 'Tactile precision. The final touch of ergonomic perfection, available in custom geometries.' }
+    ];
 
-                <!-- RHS: Content -->
-                <div class="drawer-right">
-                    <div class="drawer-header">
-                        <div>
-                            <span id="drawer-tag" class="tech-mono" style="color: var(--accent);">Category</span>
-                            <h2 id="drawer-title" style="font-size: 1.75rem; margin-top: 8px;">Product Name</h2>
-                        </div>
-                        <button class="drawer-close" onclick="closeDrawer()">&times;</button>
-                    </div>
-                    
-                    <div class="drawer-body">
-                        <p id="drawer-desc" class="sub-lead" style="margin-bottom: 48px; font-size: 1rem;">Description text...</p>
-                        <div style="margin-bottom: 48px;">
-                            <h4 class="tech-mono" style="color: var(--text-main); margin-bottom: 24px; font-weight: 700;">Technical Specifications</h4>
-                            <div id="drawer-specs-container"></div>
-                        </div>
-                        <button onclick="enquireFromDrawer()" class="btn btn-primary" style="width: 100%; padding: 20px;">Request Technical Documentation</button>
-                    </div>
-                </div>
-            </div>
+    let currentProduct = null;
+
+    function renderCatalogue() {
+      const container = document.getElementById('catalogue-grid');
+      if (!container) return;
+      container.innerHTML = products.map(product => `
+        <div class="product-card" onclick="router('product', '${product.id}')">
+          <div class="card-content">
+            <span class="card-tag">${product.type}</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 8px;">${product.name}</h3>
+            <p class="tech-mono" style="margin-top: 16px;">View Specs &rsaquo;</p>
+          </div>
         </div>
-    </div>
+      `).join('');
+    }
 
-    <!-- MAIN CONTENT AREA -->
-    <main>
-        <!-- VIEW: HOME -->
-        <div id="view-home">
-            
-            <!-- 1. HERO (UPDATED: Text LHS, Image RHS) -->
-            <section class="hero-section">
-                <div class="container hero-grid">
-                    <!-- LHS: Narrative Content (Text First) -->
-                    <div class="reveal">
-                        <span class="tech-mono" style="color: var(--accent); display: block; margin-bottom: 16px;">Since 1994</span>
-                        <h1 style="margin-bottom: 24px;">World-Class<br>Quality Zippers</h1>
-                        <h3 style="font-size: 1.125rem; margin-bottom: 16px; font-weight: 600;">Who We Are</h3>
-                        <p class="sub-lead" style="margin: 0 0 24px 0;">
-                            We are a leading manufacturer, supplier, and exporter of zippers, sliders, and garment accessories. Our products are approved by ITS and SGS testing labs.
-                        </p>
-                        <p class="sub-lead" style="margin: 0 0 24px 0;">
-                           We offer high-quality zippers at competitive prices, with reliable delivery within the promised timeframe. Our fully equipped manufacturing plant can meet demand across a wide range of zipper types, including invisible, nylon, coil, plastic moulded, and metal zippers. All zippers are produced and dyed in-house using high-temperature, high-pressure dyeing systems, ensuring consistent performance and compliance with international quality standards.
-                        </p>
-                        <h3 style="font-size: 1.125rem; margin-bottom: 16px; font-weight: 600;">Business Philosophy</h3>
-                        <p class="sub-lead" style="margin: 0;">
-                            Driven by the ambition to meet the ever-changing requirements of the market, we are committed to offering excellent products with an easy ordering process.
-                        </p>
-                    </div>
+    function renderHomePreview() {
+      const container = document.getElementById('home-products-preview');
+      if (!container) return;
+      const featuredIds = ['knitted-concealed', 'plastic-open', 'metal-close', 'cfc-zippers'];
+      const featuredProducts = products.filter(p => featuredIds.includes(p.id));
 
-                    <!-- RHS: Visual Placeholder (Image Second) -->
-                    <div class="hero-visual-placeholder reveal" style="transition-delay: 0.1s;">
-                        <span class="tech-mono" style="color: var(--text-muted); font-size: 1rem;">[Factory Floor / Operations Image]</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 2. MARQUEE (Trust Bar) -->
-            <div class="marquee-section">
-                <div class="marquee-track">
-                    <div class="marquee-item"><span>✦</span> ISO 9001 CERTIFIED</div>
-                    <div class="marquee-item"><span>✦</span> OEKO-TEX STANDARD</div>
-                    <div class="marquee-item"><span>✦</span> NICKEL FREE</div>
-                    <div class="marquee-item"><span>✦</span> AZO FREE DYES</div>
-                    <div class="marquee-item"><span>✦</span> HIGH TENSILE STRENGTH</div>
-                    <div class="marquee-item"><span>✦</span> LEAD-FREE</div>
-                    <div class="marquee-item"><span>✦</span> SGS TESTED</div>
-                    <div class="marquee-item"><span>✦</span> REACH DYEING</div>
-                    <div class="marquee-item"><span>✦</span> ULTRASONIC TOP BOTTOM</div>
-                    <div class="marquee-item"><span>✦</span> ISO 9001 CERTIFIED</div>
-                    <div class="marquee-item"><span>✦</span> OEKO-TEX STANDARD</div>
-                    <div class="marquee-item"><span>✦</span> NICKEL FREE</div>
-                    <div class="marquee-item"><span>✦</span> AZO FREE DYES</div>
-                    <div class="marquee-item"><span>✦</span> HIGH TENSILE STRENGTH</div>
-                    <div class="marquee-item"><span>✦</span> LEAD FREE</div>
-                    <div class="marquee-item"><span>✦</span> SGS TESTED</div>
-                    <div class="marquee-item"><span>✦</span> REACH DYEING</div>
-                    <div class="marquee-item"><span>✦</span> ULTRASONIC TOP BOTTOM</div>
-                </div>
-            </div>
-
-            <!-- 3. PRODUCTS PREVIEW -->
-            <section style="padding: 100px 0; background-color: var(--bg-body);">
-                <div class="container reveal">
-                    <div style="text-align: center; margin-bottom: 60px;">
-                        <span class="tech-mono" style="color: var(--text-muted);">Our Inventory</span>
-                        <h2 style="margin-top: 12px;">Core Product Categories</h2>
-                    </div>
-                    <div id="home-products-preview" class="catalogue-grid">
-                        <!-- JS Injected -->
-                    </div>
-                    <div style="text-align: center; margin-top: 60px;">
-                        <button onclick="router('catalogue')" class="btn btn-outline">Explore Full Catalogue</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. WHY US + LAB STRIP -->
-            <section id="about" style="padding: 80px 0 0; background-color: var(--bg-alt); border-top: 1px solid var(--border);">
-                <div class="container reveal">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <span class="tech-mono" style="color: var(--accent);">Our Capabilities</span>
-                        <h2 style="margin-top: 12px;">Why Partner With Us</h2>
-                    </div>
-                    
-                    <!-- Feature Grid -->
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M19.4 15.4a2 2 0 00-1-.5l-2.4-.5a6 6 0 00-3.9.5l-.3.2a6 6 0 01-3.9.5l-2-.2a2 2 0 00-1.8.5M8 4h8l-1 1v5.2a2 2 0 00.6 1.4l5 5c1.3 1.3.4 3.4-1.4 3.4H4.8c-1.8 0-2.7-2.2-1.4-3.4l5-5A2 2 0 009 10.2V5L8 4z" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <h3>Chemical Safety</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 12px;">
-                                We use non-toxic paints and AZO-free dyes. Rigorous testing for Nickel-free compliance ensures global export readiness.
-                            </p>
-                        </div>
-                        <div class="feature-card">
-                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <h3>Zero-Defect Policy</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 12px;">
-                                Statistical quality control. Every batch undergoes resistance testing for pull-off, twist, and lateral load.
-                            </p>
-                        </div>
-                        <div class="feature-card">
-                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <h3>Production Power</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 12px;">
-                                100% power backup ensures uninterrupted production lines. We leverage German and Taiwan machinery to meet deadlines.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Lab Strip (Now visually integrated) -->
-                <div class="lab-strip reveal" style="margin-top: 0; padding-top: 40px; padding-bottom: 80px; border-top: none; background-color: transparent;">
-                    <div class="container">
-                        <div style="width: 100%; height: 1px; background-color: var(--border); margin-bottom: 40px; opacity: 0.5;"></div>
-                        <span class="tech-mono" style="color: var(--accent);">Standardized Testing Protocol</span>
-                        <div class="lab-grid">
-                            <div class="lab-item"><span style="color: var(--accent); margin-right: 8px;">✓</span> Chain Cross-Wire Strength</div>
-                            <div class="lab-item"><span style="color: var(--accent); margin-right: 8px;">✓</span> Top/Bottom Stop Holding</div>
-                            <div class="lab-item"><span style="color: var(--accent); margin-right: 8px;">✓</span> Slider Pull-Off Resistance</div>
-                            <div class="lab-item"><span style="color: var(--accent); margin-right: 8px;">✓</span> Torque/Twist Resistance</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 6. ENQUIRY SECTION -->
-            <section id="enquiry">
-                <div class="container enquiry-container reveal">
-                    <h2 style="margin-bottom: 16px;">Start Your Project</h2>
-                    <p style="color: #cbd5e1; margin-bottom: 40px; font-size: 1.1rem;">
-                        Connect with our sales specialists for volume logistics and technical documentation.
-                    </p>
-
-                    <form id="enquiryForm" onsubmit="handleFormSubmit(event)">
-                        <div class="form-grid">
-                            <input type="text" name="name" id="field-name" class="form-input" placeholder="Full Name">
-                            <input type="tel" name="phone" id="field-phone" class="form-input" placeholder="Phone Number">
-                        </div>
-                        <input type="email" name="email" id="field-email" class="form-input" placeholder="Work Email">
-                        <textarea name="message" id="enquiry-message" class="form-input" rows="5" style="resize: none;" placeholder="Project requirements..."></textarea>
-                        
-                        <!-- Honeypot -->
-                        <div class="hidden"><input type="text" name="website" tabindex="-1"></div>
-
-                        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; padding: 18px; font-weight: 700; background-color: var(--accent); border-color: var(--accent);">
-                            Send Enquiry &rsaquo;
-                        </button>
-                    </form>
-
-                    <!-- Success State -->
-                    <div id="success-state" class="success-overlay">
-                        <div style="font-size: 4rem; color: #4ade80; margin-bottom: 16px;">✓</div>
-                        <h2 style="margin-bottom: 12px;">Enquiry Received</h2>
-                        <p style="color: #cbd5e1; margin-bottom: 32px;">Our engineering team will review your requirements and follow up shortly.</p>
-                        <button onclick="resetForm()" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Send Another</button>
-                    </div>
-                </div>
-            </section>
+      container.innerHTML = featuredProducts.map(product => `
+        <div class="product-card" onclick="router('product', '${product.id}')">
+          <div class="card-content">
+            <span class="card-tag">${product.type}</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 8px;">${product.name}</h3>
+            <p class="tech-mono" style="margin-top: 16px;">View Specs &rsaquo;</p>
+          </div>
         </div>
+      `).join('');
+    }
 
-        <!-- VIEW: CATALOGUE -->
-        <div id="view-catalogue" class="hidden">
-            <div class="container" style="padding-top: 80px;">
-                <div style="max-width: 700px;">
-                    <span class="tech-mono" style="color: var(--text-muted);">Inventory</span>
-                    <h2 style="margin-top: 12px; margin-bottom: 16px;">The Collection</h2>
-                    <p class="sub-lead">Engineered for reliability. Organized by material composition and industrial application.</p>
-                </div>
-                <div id="catalogue-grid" class="catalogue-grid"></div>
-            </div>
+    function openDrawer(id) {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+      currentProduct = product;
+
+      const drawerImg = document.getElementById('drawer-img');
+      drawerImg.src = product.image;
+      drawerImg.style.display = 'block';
+      drawerImg.nextElementSibling.style.display = 'none';
+
+      document.getElementById('drawer-tag').innerText = product.type;
+      document.getElementById('drawer-title').innerText = product.name;
+      document.getElementById('drawer-desc').innerText = product.description;
+
+      const specContainer = document.getElementById('drawer-specs-container');
+      specContainer.innerHTML = Object.entries(product.specs).map(([key, value]) => `
+        <div class="spec-row">
+          <span class="spec-label">${key}</span>
+          <span class="spec-value">${value}</span>
         </div>
-    </main>
+      `).join('');
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-  <div class="container footer-inner">
+      document.getElementById('drawer-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
 
-    <!-- LEFT -->
-    <div class="footer-col footer-left">
-      <div class="footer-title">GOYAL ZIP ENTERPRISES</div>
-      <div class="footer-subtitle">B2B Zipper Specialists</div>
+    function closeDrawer() {
+      document.getElementById('drawer-overlay').classList.remove('open');
+      document.body.style.overflow = 'auto';
+      if (window.location.hash.includes('#product')) { history.back(); }
+    }
 
-      <a class="footer-row footer-location"
-         href="https://maps.app.goo.gl/toTtXdGVvwigduFy8"
-         target="_blank" rel="noopener"
-         aria-label="Open location in Google Maps">
+    function enquireFromDrawer() {
+      document.getElementById('drawer-overlay').classList.remove('open');
+      document.body.style.overflow = 'auto';
+      router('home', null, false);
+      setTimeout(() => {
+        const section = document.getElementById('enquiry');
+        const msgBox = document.getElementById('enquiry-message');
+        section.scrollIntoView({ behavior: 'smooth' });
+        msgBox.value = `I am interested in specifying the ${currentProduct.name} for my project. Please provide full technical documentation.`;
+        msgBox.focus();
+      }, 100);
+    }
 
-        <span class="footer-icon" aria-hidden="true">
-          <!-- Pin icon -->
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-            <path d="M12 2c-3.86 0-7 3.14-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
-          </svg>
-        </span>
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      if (!formData.get('name') || !formData.get('phone')) { showToast('Name and Phone are required.'); return; }
+      if (!formData.get('email').includes('@')) { showToast('Invalid email address.'); return; }
 
-        <span>
-          Govind Puri, New Delhi, 110019
-        </span>
-      </a>
-    </div>
+      const btn = document.getElementById('submit-btn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = "Sending...";
+      btn.disabled = true;
 
-    <!-- RIGHT -->
-    <div class="footer-col footer-right">
-      <a class="footer-row" href="tel:+919582320581" aria-label="Call +91 95823 20581">
-        <span class="footer-icon" aria-hidden="true">
-          <!-- Phone icon -->
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-            <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z"/>
-          </svg>
-        </span>
-        <span>+91 95823 20581</span>
-      </a>
-
-      <a class="footer-row" href="tel:+919560725779" aria-label="Call +91 95607 25779">
-        <span class="footer-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-            <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z"/>
-          </svg>
-        </span>
-        <span>+91 95607 25779</span>
-      </a>
-
-      <a class="footer-row" href="mailto:goyalzippers@gmail.com" aria-label="Email goyalzippers@gmail.com">
-        <span class="footer-icon" aria-hidden="true">
-          <!-- Mail icon -->
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-        </span>
-        <span>goyalzippers@gmail.com</span>
-      </a>
-
-      <div class="footer-copy">© 2007 Goyal Enterprises.</div>
-    </div>
-
-  </div>
-</footer>
-
-    <!-- TOAST -->
-    <div id="toast"></div>
-
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // --- DATA LAYER ---
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybUN0eFjBmoNGJtyohIP9KUx-HpIhwNZsSiUWwWmsz5I6cDZn4DI7cJuFZiGU5rpZG/exec";
-        
-        // Added 'image' property with filenames from Code 1
-        const products = [
-            { id: 'knitted-concealed', image: 'knitted-concealed.jpg', name: 'Knitted Concealed Zippers', type: 'Concealed', specs: { 'Sizes': '#3, #4', 'Stopper': 'Ultrasonic', 'Tape': 'Knitted Synthetic' }, description: 'The art of invisibility. Seamless integration for haute couture and high-end fashion apparel.' },
-            { id: 'woven-concealed', image: 'woven-concealed.jpg', name: 'Woven Concealed Zippers', type: 'Concealed', specs: { 'Tensile Strength': 'High', 'Tape': 'Woven High-Density', 'Grade': 'Premium Export' }, description: 'Engineered subtlety. A high-density weave designed for uncompromising silhouettes and industrial-grade durability.' },
-            { id: 'plastic-open', image: 'plastic-open.jpg', name: 'Plastic Moulded Open-End', type: 'Plastic', specs: { 'Sizes': '#3, #5, #8', 'Teeth': 'Interlocking Resin', 'Usage': 'Heavy Purpose' }, description: 'Rigorously tested performance. Durable fasteners built for the high-intensity demands of professional sportswear.' },
-            { id: 'plastic-close', image: 'plastic-close.jpg', name: 'Plastic Moulded Close-End', type: 'Plastic', specs: { 'Strength': 'Industrial', 'Variations': 'Versatile Shapes', 'Stopper': 'Reinforced' }, description: 'Architectural integrity. Reliable strength for structural bags, technical coats, and heavy-duty industrial applications.' },
-            { id: 'metal-close', image: 'metal-close.jpg', name: 'Metal Close-End Zippers', type: 'Metal', specs: { 'Material': 'Golden Brass', 'Finish': 'Antique Polish', 'Lock': 'Auto-lock Mechanism' }, description: 'Refined heritage. Hand-polished metal components that provide the ultimate technical statement for premium denim.' },
-            { id: 'metal-open', image: 'metal-open.jpg', name: 'Metal Open-End Zippers', type: 'Metal', specs: { 'Durability': 'Extreme', 'Join Type': 'Temporary', 'Grade': 'Camping / Military' }, description: 'Industrial grade unyielding durability. Designed for the rigors of global exploration and heavy equipment.' },
-            { id: 'cfc-close', image: 'cfc-close.jpg', name: 'CFC Close-End Zippers', type: 'CFC', specs: { 'Sizes': '#3 through #10', 'Function': 'Non-separating', 'Quality': 'ISO 9001' }, description: 'Steadfast utility. Precision closure systems manufactured to exacting standards for high-traffic luggage.' },
-            { id: 'cfc-zippers', image: 'cfc-zippers.jpg', name: 'CFC Zippers (General)', type: 'CFC', specs: { 'Compliance': 'Nickel Free', 'Pin': 'Moulded Box', 'Resistance': 'Corrosion Proof' }, description: 'Safety by design. Nickel-free precision components for everyday excellence and strict chemical compliance.' },
-            { id: 'poly-coil', image: 'poly-coil.jpg', name: 'Polyester Coil Zippers', type: 'Coil', specs: { 'Chain': 'Flexible Poly', 'Weight': 'Lightweight', 'Pin': 'Moulded Box' }, description: 'Fluid motion. The flexible, lightweight standard for contemporary luxury accessories and everyday carry.' },
-            { id: 'sliders', image: 'sliders.jpg', name: 'Sliders And Pullers', type: 'Accessories', specs: { 'Shape': 'Custom Geometry', 'Sizes': 'Universal Fit', 'Material': 'Zinc Alloy' }, description: 'Tactile precision. The final touch of ergonomic perfection, available in custom geometries.' }
-        ];
-
-        let currentProduct = null;
-
-        // --- RENDER LOGIC ---
-        function renderCatalogue() {
-            const container = document.getElementById('catalogue-grid');
-            if (!container) return;
-            container.innerHTML = products.map(product => `
-                <div class="product-card" onclick="router('product', '${product.id}')">
-                    <div class="card-content">
-                        <span class="card-tag">${product.type}</span>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 8px;">${product.name}</h3>
-                        <p class="tech-mono" style="margin-top: 16px;">View Specs &rsaquo;</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        // --- HOME PREVIEW LOGIC ---
-        function renderHomePreview() {
-            const container = document.getElementById('home-products-preview');
-            if (!container) return;
-            // Select Knitted, Plastic, Metal, CFC
-            const featuredIds = ['knitted-concealed', 'plastic-open', 'metal-close', 'cfc-zippers'];
-            const featuredProducts = products.filter(p => featuredIds.includes(p.id));
-            
-            container.innerHTML = featuredProducts.map(product => `
-                <div class="product-card" onclick="router('product', '${product.id}')">
-                    <div class="card-content">
-                        <span class="card-tag">${product.type}</span>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 8px;">${product.name}</h3>
-                        <p class="tech-mono" style="margin-top: 16px;">View Specs &rsaquo;</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // --- DRAWER LOGIC (UPDATED: Handle Image) ---
-        function openDrawer(id) {
-            const product = products.find(p => p.id === id);
-            if (!product) return;
-            currentProduct = product;
-            
-            // Image
-            const drawerImg = document.getElementById('drawer-img');
-            drawerImg.src = product.image;
-            // Reset error state if previously triggered
-            drawerImg.style.display = 'block';
-            drawerImg.nextElementSibling.style.display = 'none';
-
-            // Content
-            document.getElementById('drawer-tag').innerText = product.type;
-            document.getElementById('drawer-title').innerText = product.name;
-            document.getElementById('drawer-desc').innerText = product.description;
-            
-            // Specs
-            const specContainer = document.getElementById('drawer-specs-container');
-            specContainer.innerHTML = Object.entries(product.specs).map(([key, value]) => `
-                <div class="spec-row"><span class="spec-label">${key}</span><span class="spec-value">${value}</span></div>
-            `).join('');
-            
-            document.getElementById('drawer-overlay').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDrawer() {
-            document.getElementById('drawer-overlay').classList.remove('open');
-            document.body.style.overflow = 'auto';
-            if (window.location.hash.includes('#product')) { history.back(); }
-        }
-
-        // --- COMMAND CENTER LOGIC ---
-        function enquireFromDrawer() {
-            document.getElementById('drawer-overlay').classList.remove('open');
-            document.body.style.overflow = 'auto';
-            router('home', null, false);
-            setTimeout(() => {
-                const section = document.getElementById('enquiry');
-                const msgBox = document.getElementById('enquiry-message');
-                section.scrollIntoView({ behavior: 'smooth' });
-                msgBox.value = `I am interested in specifying the ${currentProduct.name} for my project. Please provide full technical documentation.`;
-                msgBox.focus();
-            }, 100);
-        }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            if (!formData.get('name') || !formData.get('phone')) { showToast('Name and Phone are required.'); return; }
-            if (!formData.get('email').includes('@')) { showToast('Invalid email address.'); return; }
-
-            const btn = document.getElementById('submit-btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "Sending...";
-            btn.disabled = true;
-
-            fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData })
-                .then(() => {
-                    form.style.display = 'none';
-                    document.getElementById('success-state').style.display = 'block';
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                })
-                .catch(err => {
-                    console.error(err);
-                    showToast('Connection error. Please try again.');
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                });
-        }
-
-        function resetForm() {
-            const form = document.getElementById('enquiryForm');
-            form.reset();
-            form.style.display = 'block';
-            document.getElementById('success-state').style.display = 'none';
-        }
-
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.innerText = msg;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 4000);
-        }
-
-        // --- ROUTER & INIT ---
-        function router(view, param = null, pushHistory = true) {
-            const views = { home: document.getElementById('view-home'), catalogue: document.getElementById('view-catalogue') };
-            if (pushHistory) {
-                const url = view === 'home' ? '#' : `#${view}${param ? '/' + param : ''}`;
-                history.pushState({ view, param }, '', url);
-            }
-            Object.values(views).forEach(el => el.classList.add('hidden'));
-            if (view === 'product') {
-                views.catalogue.classList.remove('hidden');
-                openDrawer(param);
-            } else {
-                if (document.getElementById('drawer-overlay').classList.contains('open')) {
-                    document.getElementById('drawer-overlay').classList.remove('open');
-                    document.body.style.overflow = 'auto';
-                }
-                if (views[view]) {
-                    views[view].classList.remove('hidden');
-                    window.scrollTo(0, 0);
-                }
-            }
-            document.getElementById('mobile-menu').classList.remove('open');
-        }
-
-        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.15 });
-
-        function initObservers() { document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); }
-
-        window.addEventListener('popstate', (event) => {
-            if (event.state) { router(event.state.view, event.state.param, false); } else { handleInitialLoad(); }
+      fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData })
+        .then(() => {
+          form.style.display = 'none';
+          document.getElementById('success-state').style.display = 'block';
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        })
+        .catch(err => {
+          console.error(err);
+          showToast('Connection error. Please try again.');
+          btn.innerHTML = originalText;
+          btn.disabled = false;
         });
+    }
 
-        function handleInitialLoad() {
-            const hash = window.location.hash;
-            renderCatalogue();
-            renderHomePreview(); 
-            initObservers();
-            if (hash.includes('#product/')) {
-                const productId = hash.split('/')[1];
-                router('catalogue', null, false);
-                router('product', productId, false);
-            } else if (hash.includes('#catalogue')) {
-                router('catalogue', null, false);
-            } else {
-                router('home', null, false);
-            }
+    function resetForm() {
+      const form = document.getElementById('enquiryForm');
+      form.reset();
+      form.style.display = 'block';
+      document.getElementById('success-state').style.display = 'none';
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    function router(view, param = null, pushHistory = true) {
+      const views = { home: document.getElementById('view-home'), catalogue: document.getElementById('view-catalogue') };
+      if (pushHistory) {
+        const url = view === 'home' ? '#' : `#${view}${param ? '/' + param : ''}`;
+        history.pushState({ view, param }, '', url);
+      }
+      Object.values(views).forEach(el => el.classList.add('hidden'));
+      if (view === 'product') {
+        views.catalogue.classList.remove('hidden');
+        openDrawer(param);
+      } else {
+        if (document.getElementById('drawer-overlay').classList.contains('open')) {
+          document.getElementById('drawer-overlay').classList.remove('open');
+          document.body.style.overflow = 'auto';
         }
+        if (views[view]) {
+          views[view].classList.remove('hidden');
+          window.scrollTo(0, 0);
+        }
+      }
+      document.getElementById('mobile-menu').classList.remove('open');
+    }
 
-        document.addEventListener('DOMContentLoaded', handleInitialLoad);
-    </script>
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.15 });
+
+    function initObservers() {
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    window.addEventListener('popstate', (event) => {
+      if (event.state) { router(event.state.view, event.state.param, false); } else { handleInitialLoad(); }
+    });
+
+    function handleInitialLoad() {
+      const hash = window.location.hash;
+      renderCatalogue();
+      renderHomePreview();
+      initObservers();
+
+      if (hash.includes('#product/')) {
+        const productId = hash.split('/')[1];
+        router('catalogue', null, false);
+        router('product', productId, false);
+      } else if (hash.includes('#catalogue')) {
+        router('catalogue', null, false);
+      } else {
+        router('home', null, false);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', handleInitialLoad);
+  </script>
 </body>
 </html>
